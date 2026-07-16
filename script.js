@@ -21,10 +21,6 @@ Book.prototype.readToggle = function() {
     this.read = this.read === true ? false : true;
 }
 
-function addDeleteButton() {
-    
-}
-
 function displayBook(book) {
     const card = document.createElement("div")
     card.className = "card"
@@ -139,7 +135,7 @@ container.addEventListener('click', (event) => {
     if (event.target.classList.contains("change-read")) {
         const button = event.target;
         const changeBook = myLibrary.find(book => book.id === button.dataset.id);
-        changeBook.read = changeBook.read === true ? false : true 
+        changeBook.readToggle();
         const card = button.closest(".card");
         const readText = card.querySelector(".read");
         readText.textContent = changeBook.read ? "Read Already" : "Not Read Yet";
