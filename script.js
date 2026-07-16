@@ -17,6 +17,14 @@ function Book(id, title, author, pages, read) {
     }
 }
 
+Book.prototype.readToggle = function() {
+    this.read = this.read === true ? false : true;
+}
+
+function addDeleteButton() {
+    
+}
+
 function displayBook(book) {
     const card = document.createElement("div")
     card.className = "card"
@@ -35,18 +43,26 @@ function displayBook(book) {
 
     const read = document.createElement("p")
     read.className = "read"
-    read.textContent = book.read ? "read already" : "not read yet"
+    read.textContent = book.read ? "Read Already" : "Not Read Yet"
 
+    const deleteDiv = document.createElement("div")
+    deleteDiv.className = "card-delete"
     const deleteBtn = document.createElement("button")
     deleteBtn.className = "delete"
     deleteBtn.dataset.id = book.id
-    deleteBtn.textContent = "Delete Book"
+    deleteDiv.appendChild(deleteBtn)
 
+    const changeReadBtn = document.createElement("button")
+    changeReadBtn.className = "change-read"
+    changeReadBtn.dataset.id = book.id
+    changeReadBtn.textContent = book.read === true ? "Change to not read" : "Change to read"
+
+    card.appendChild(deleteDiv)
     card.appendChild(title)
     card.appendChild(author)
     card.appendChild(pages)
     card.appendChild(read)
-    card.appendChild(deleteBtn)
+    card.appendChild(changeReadBtn)
     container.appendChild(card)
 }
 
@@ -118,6 +134,18 @@ cancel.addEventListener("click", () => {
     dialog.close();
     form.reset(); 
 });
+
+container.addEventListener('click', (event) => {
+    if (event.target.classList.contains("change-read")) {
+        const button = event.target;
+        const changeBook = myLibrary.find(book => book.id === button.dataset.id);
+        changeBook.read = changeBook.read === true ? false : true 
+        const card = button.closest(".card");
+        const readText = card.querySelector(".read");
+        readText.textContent = changeBook.read ? "Read Already" : "Not Read Yet";
+        button.textContent = changeBook.read === true ? "Change to not read" : "Change to read"
+    }
+})
 
 
  
