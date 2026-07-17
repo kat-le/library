@@ -32,7 +32,7 @@ body {
 }
 
 .header-logo {
-    background-image: url(open-book.png);
+    background-image: url(assets/open-book.png);
     height:60px;
     width: 60px;
     background-position: center;
@@ -88,7 +88,6 @@ body {
   outline: 3px solid white;
   outline-offset: 0;
   z-index: 1;
-
 }
 
 html {
@@ -173,6 +172,7 @@ div > .card:first-child:after {
     font-size: 1rem;
     font-weight: 600;
 }
+
 .dialog-form {
     outline: 3px solid white;
     background-color: #fcebff;
@@ -238,7 +238,6 @@ dialog {
     gap: 12px;
     margin-top: 20px;
     justify-content: flex-end;
- 
 }
 
 .form-btns button {
@@ -272,7 +271,7 @@ dialog {
     height: 25px;
     border: none;
     cursor: pointer;
-    background-image: url(delete.svg);
+    background-image: url(assets/delete.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;

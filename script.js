@@ -144,7 +144,7 @@ addBtn.addEventListener('click', (e) => {
         }
         return;
     }
-    
+
     const formData = new FormData(form);
     const title = formData.get("form-title")
     const author = formData.get("form-author")
