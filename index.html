@@ -6,63 +6,71 @@
     <title>Library</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css"/>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-   
    <div class="header">
         <div class="h1-container">
+            <div class="header-logo"></div>
             <h1>My Library</h1>
         </div>
     </div>
-    <div class="container" id="container">
-        <div class="card">
-            <div class="add-card">            
-                <button class="add-card-btn" command="show-modal" commandfor="dialog-form">
-                    Add A Book
-                </button>
-            </div>
-            <dialog id="dialog-form">
-                <div class="form-header">
-                    <p>Add A New Book!</p>
+    <div class="library-container">
+        <div class="container-header">My Books</div>
+        <div class="container" id="container">
+            <div class="card">
+                <div class="add-card">            
+                    <button class="add-card-btn" command="show-modal" commandfor="dialog-form">
+                        Add a book
+                    </button>
                 </div>
-                <div class="form-container">
-                    <form action="#" method="dialog">
-                        <div class="form-item">
-                            <label for="form-title">Book Title</label>
-                            <input type="text" id="form-title" name="form-title" required/>
-                        </div>
-                        <div class="form-item">
-                            <label for="form-author">Author</label>
-                            <input type="text" id="form-author" name="form-author" required/>
-                        </div>
-                        <div class="form-item">
-                            <label for="form-pages">Number of Pages</label> 
-                            <input type="number" id="form-pages" name="form-pages"required/>
-                        </div>
-                        <div class="form-item">
-                            <label>Read Status</label>
-                            <div class="checkboxes">
-                                <div>
-                                    <label for="form-read">Read</label>
-                                    <input type="radio" id="form-read" name="read-status" value="read" required/>
+                <dialog class="dialog-form" id="dialog-form">
+                    <div class="form-header">
+                        <p>Add A New Book!</p>
+                    </div>
+                    
+                        <form action="#" method="dialog">
+                            <div class="form-container">
+                                <div class="form-item">
+                                    <label for="form-title">Book Title</label>
+                                    <input type="text" id="form-title" name="form-title" required/>
                                 </div>
-                                <div>
-                                    <label for="form-not-read">Not Read</label>
-                                    <input type="radio" id="form-not-read" name="read-status" value="not-read"/>
+                                <div class="form-item">
+                                    <label for="form-author">Author</label>
+                                    <input type="text" id="form-author" name="form-author" required/>
+                                </div>
+                                <div class="form-item">
+                                    <label for="form-pages">Number of Pages</label> 
+                                    <input type="number" id="form-pages" name="form-pages"required/>
+                                </div>
+                                <div class="form-item">
+                                    <label>Read Status</label>
+                                    <div class="checkboxes">
+                                        <div>
+                                            <label for="form-read">Read</label>
+                                            <input type="radio" id="form-read" name="read-status" value="read" required/>
+                                        </div>
+                                        <div>
+                                            <label for="form-not-read">Not Read</label>
+                                            <input type="radio" id="form-not-read" name="read-status" value="not-read"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-btns">
-                            <button class="cancel" id="cancel" type="button">Cancel</button>
-                            <button class="add" id="add" type="submit">Add</button>
-                        </div>
-                    </form>
-                </div>
-            </dialog>
+                            <div class="form-btns">
+                                <button class="cancel" id="cancel" type="button">Cancel</button>
+                                <button class="add" id="add" type="submit">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </dialog>
+            </div>
         </div>
+    </div>
+    <div class="footer">
+        <a href="https://www.flaticon.com/free-icons/open-book" title="open book icons">Open book icons created by Magnific - Flaticon</a>
     </div>
 </body>
 </html>

@@ -2,57 +2,93 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Grandstander", cursive;
 }
 
 body {
-    /* background-image: url(background4.jpg);
-    background-size: cover;  */
     background-color: #fcebff; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: 0px 50px;
     gap: 24px;
-}
-
-.header {
-    display: flex;
-    width: 100%;
-    justify-content: center;
+     min-height: 100vh;
 }
 
 .h1-container {
-    
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
 }
-.header h1 {
-    font-size: 44px;
-    color: #565554;
 
+.header {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 5px 56px 5px;
+    background-color: white;
+    box-shadow: 2px 3px 3px 2px rgba(126, 126, 126, 0.2);
+}
+
+.header-logo {
+    background-image: url(open-book.png);
+    height:60px;
+    width: 60px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    margin-bottom: 18px;
+}
+
+.header h1 {
+    font-size: 42px;
+    color: #565554;
+}
+
+.library-container {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    flex: 1;
+}
+
+.container-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 12px 80px 20px;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #565554;
 }
 
 .container {
-    background-color: transparent;
-    height: fit-content;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-    gap: 24px;
+    gap: 38px;
     justify-content: center;
+    row-gap: 56px;
     border-radius: 20px;
-    padding: 38px;
+    padding: 12px 38px;
 }
 
-.card{
+.card {
   color: white;
   position: relative;
   width:242px;
   height:350px;
-  background: #ead6ff;
+  background: var(--cover);
   border-radius: 20px 16px 12px 32px;
-  border: 2px solid #a051f5;
-  background-image: linear-gradient(to right,#c491fb 48px, #be85fc 50px, transparent 50px);  
-box-shadow: 12px 12px 0 rgba(32, 32, 32, 0.2);
+  border: 2px solid var(--border);
+  background-image: linear-gradient(to right,var(--spine-light) 48px, var(--spine-dark) 50px, transparent 50px);  
+  box-shadow: 15px 15px 0 rgba(126, 126, 126, 0.2);
+  outline: 3px solid white;
+  outline-offset: 0;
+  z-index: 1;
+
 }
 
 html {
@@ -74,9 +110,19 @@ html {
   background: white;
   border-radius: 32px 4px 4px 32px;
   box-shadow: inset 4px 6px 0px 0px #E4E0CE;  
-  border-bottom: 2px solid #a051f5;
-  border-top: 2px solid #a051f5;
-  border-left: 2px solid #a051f5;
+  border: 2px solid var(--border);
+  border-right: none;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 5px;
+    width: 5px;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.32);
+    border-radius: 100px;
 }
 
 div > .card:first-child {
@@ -89,36 +135,60 @@ div > .card:first-child:after {
     border-left: 2px solid black;
 }
 
-
-
 .card p {
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 4px 12px 4px 56px;
-    background: #d0a4ff;
-    padding: 2px 6px;
-    border-radius: 10px;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    margin: 2px 12px 2px 60px;
 }
-
 
 .card .title {
     font-size: 20px;
     font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.card .author, .card .title {
+    color: #565554;
 }
 
 .card .pages {
     margin-top: 10px;
+    background: var(--spine-dark);
+    padding: 2px 6px;
+    border-radius: 10px;
 }
 
 .change-read {
     position: absolute;
     left: 56px;
     bottom: 80px;
+    cursor: pointer;
+    width: calc(100% - 56px - 16px);
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #a051f5;
+    background-color: #d0a4ff;
+    color: white;
+    padding: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.dialog-form {
+    outline: 3px solid white;
+    background-color: #fcebff;
+    color: #565554;
+    border: 2px solid #565554;
 }
 
-#dialog-form p {
+.dialog-form input {
+    border-radius: 20px;
+    border: none;
+    height: 30px;
+    padding: 4px 10px;
+    background-color: #fcebff;
+}
+
+.dialog-form p {
     background-color: transparent;
     margin: 0;
 }
@@ -126,6 +196,7 @@ div > .card:first-child:after {
 .form-header {
     width: 100%;
     text-align: center;
+    font-size: 1.3rem;
 }
 
 dialog {
@@ -145,6 +216,9 @@ dialog {
     flex-direction: column;
     text-align: left;
     padding: 16px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
 .form-item {
@@ -159,24 +233,50 @@ dialog {
     font-weight: 800;
 }
 
+.form-btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    justify-content: flex-end;
+ 
+}
+
+.form-btns button {
+    color: #565554;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+    border: 2px solid #565554;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
 .checkboxes {
     display: flex;
     gap: 16px;
+    padding: 0px 4px;
+}
+
+.checkboxes div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .delete {
-    margin-top: 8px;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    margin-top: 12px;
+    width: 25px;
+    height: 25px;
     border: none;
     cursor: pointer;
-    background-color: transparent;
     background-image: url(delete.svg);
     background-position: center;
     background-repeat: no-repeat;
+    background-color: transparent;
 }
-
 
 .card-delete {
     width: 100%;
@@ -185,8 +285,6 @@ dialog {
     justify-content: flex-end;
     padding-right: 16px;
 }
-
-
 
 .add-card {
     height: 100%;
@@ -205,18 +303,42 @@ dialog {
     justify-content: center;
     align-items: center;
     border-radius:  20px 16px 12px 32px;
+    font-size: 1.2rem;
 }
 
-.circle {
-    max-width: 250px;  
-    height: 270px;
-    border-radius: 50%;
-    background-color: pink;
-    background-image: url(add.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80%;
+.footer {
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 0.7rem;
+    color: #565554;
+    flex-shrink: 0;
+    box-shadow: 0 -3px 3px rgba(126, 126, 126, 0.2);
 }
+
+
+.bookmark {
+    position: absolute;
+    bottom: 10px;
+    left: 75%;
+    width: 36px;
+    height: 50px;
+    z-index: 1;
+}
+
+.bookmark::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 12px solid white;
+}
+
 
 
 
